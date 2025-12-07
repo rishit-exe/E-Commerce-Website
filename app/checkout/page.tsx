@@ -5,9 +5,22 @@ import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FeaturesSection from '@/components/FeaturesSection';
+import { useCart } from '@/context/CartContext';
 
 export default function Checkout() {
+  const { cartItems } = useCart();
   const [paymentMethod, setPaymentMethod] = useState('bank-transfer');
+
+  const parsePrice = (priceString: string | number): number => {
+    const str = typeof priceString === 'string' ? priceString : String(priceString);
+    const cleaned = str.replace(/[^\d]/g, '');
+    return parseFloat(cleaned) || 0;
+  };
+
+  const total = cartItems.reduce((sum, item) => {
+    const price = parsePrice(item.price);
+    return sum + (price * item.quantity);
+  }, 0);
 
   return (
     <div className="bg-white min-h-screen">
@@ -210,27 +223,43 @@ export default function Checkout() {
                 <h3 className="font-medium text-[20px] sm:text-[24px] text-black">Subtotal</h3>
               </div>
 
-              {/* Product Item */}
-              <div className="flex justify-between mb-5 sm:mb-[22px]">
-                <div className="flex items-center gap-2">
-                  <span className="text-[#9F9F9F] text-[14px] sm:text-[16px]">Asgaard sofa</span>
-                  <span className="font-medium text-[12px] text-black">X</span>
-                  <span className="font-medium text-[12px] text-black">1</span>
+              {/* Product Items */}
+              {cartItems.length === 0 ? (
+                <div className="text-center py-8">
+                  <p className="text-[#9F9F9F] text-[16px] mb-4">No items in cart</p>
+                  <a href="/shop" className="text-[#B88E2F] hover:underline">Continue Shopping</a>
                 </div>
-                <span className="font-light text-[14px] sm:text-[16px] text-black">Rs. 250,000.00</span>
-              </div>
+              ) : (
+                <>
+                  {cartItems.map((item) => {
+                    const itemPrice = parsePrice(item.price);
+                    const itemSubtotal = itemPrice * item.quantity;
 
-              {/* Subtotal */}
-              <div className="flex justify-between mb-5 sm:mb-[22px]">
-                <span className="text-[14px] sm:text-[16px] text-black">Subtotal</span>
-                <span className="font-light text-[14px] sm:text-[16px] text-black">Rs. 250,000.00</span>
-              </div>
+                    return (
+                      <div key={item.id} className="flex justify-between mb-5 sm:mb-[22px]">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#9F9F9F] text-[14px] sm:text-[16px]">{item.title}</span>
+                          <span className="font-medium text-[12px] text-black">X</span>
+                          <span className="font-medium text-[12px] text-black">{item.quantity}</span>
+                        </div>
+                        <span className="font-light text-[14px] sm:text-[16px] text-black">Rp {itemSubtotal.toLocaleString('id-ID')}</span>
+                      </div>
+                    );
+                  })}
 
-              {/* Total */}
-              <div className="flex justify-between mb-6 sm:mb-[35px]">
-                <span className="text-[14px] sm:text-[16px] text-black">Total</span>
-                <span className="font-bold text-[20px] sm:text-[24px] text-[#B88E2F]">Rs. 250,000.00</span>
-              </div>
+                  {/* Subtotal */}
+                  <div className="flex justify-between mb-5 sm:mb-[22px]">
+                    <span className="text-[14px] sm:text-[16px] text-black">Subtotal</span>
+                    <span className="font-light text-[14px] sm:text-[16px] text-black">Rp {total.toLocaleString('id-ID')}</span>
+                  </div>
+
+                  {/* Total */}
+                  <div className="flex justify-between mb-6 sm:mb-[35px]">
+                    <span className="text-[14px] sm:text-[16px] text-black">Total</span>
+                    <span className="font-bold text-[20px] sm:text-[24px] text-[#B88E2F]">Rp {total.toLocaleString('id-ID')}</span>
+                  </div>
+                </>
+              )}
 
               {/* Divider */}
               <div className="w-full h-px bg-[#D9D9D9] mb-5 sm:mb-[22px]"></div>

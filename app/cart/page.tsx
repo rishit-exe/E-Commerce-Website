@@ -210,8 +210,8 @@ export default function Cart() {
 
             {/* Check Out Button */}
             <div className="flex justify-center">
-              <a href="/checkout">
-                <button className="border border-black rounded-[15px] w-full sm:w-[222px] h-12 sm:h-14 lg:h-[58.95px] text-[18px] sm:text-[20px] text-black font-normal hover:bg-black hover:text-white transition-colors">
+              <a href="/checkout" className="w-full sm:w-auto">
+                <button className="border border-black rounded-[15px] w-full sm:w-[222px] h-14 sm:h-14 lg:h-[58.95px] text-[20px] sm:text-[20px] text-black font-normal hover:bg-black hover:text-white transition-colors">
                   Check Out
                 </button>
               </a>
