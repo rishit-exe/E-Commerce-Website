@@ -29,7 +29,9 @@ export default function Header({ className }: { className?: string }) {
           <Image src={imgIconAccount} alt="Account" width={28} height={28} className="cursor-pointer" />
           <Image src={imgIconSearch} alt="Search" width={28} height={28} className="cursor-pointer" />
           <Image src={imgIconHeart} alt="Wishlist" width={28} height={28} className="cursor-pointer" />
-          <Image src={imgIconCart} alt="Cart" width={28} height={28} className="cursor-pointer" />
+          <a href="/cart">
+            <Image src={imgIconCart} alt="Cart" width={28} height={28} className="cursor-pointer" />
+          </a>
         </div>
       </div>
     </header>
