@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import productsData from '@/data/products.json';
+import { useCart } from '@/context/CartContext';
 
 // Product Images
 const imgAsgaardMain = "/single-product/asgaard-main.jpg";
@@ -78,12 +79,38 @@ function ProductGallery() {
 }
 
 function ProductDetails() {
+  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('L');
   const [selectedColor, setSelectedColor] = useState('#816DFA');
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleAddToCart = () => {
+    const product = {
+      id: 'asgaard-sofa',
+      title: 'Asgaard sofa',
+      price: 'Rp 250.000',
+      image: imgAsgaardMain
+    };
+    
+    // Add the product multiple times based on quantity
+    for (let i = 0; i < quantity; i++) {
+      addToCart(product);
+    }
+    
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 2000);
+  };
 
   return (
     <div className="flex flex-col">
+      {/* Notification Toast */}
+      {showNotification && (
+        <div className="fixed top-24 right-4 bg-[#B88E2F] text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in">
+          Added to cart!
+        </div>
+      )}
+      
       <h1 className="text-black font-normal text-[28px] sm:text-[36px] lg:text-[42px] mb-3 lg:mb-[16px]">Asgaard sofa</h1>
       <p className="text-[#9F9F9F] font-medium text-[20px] sm:text-[22px] lg:text-[24px] mb-3 lg:mb-[16px]">Rs. 250,000.00</p>
 
@@ -167,7 +194,10 @@ function ProductDetails() {
         </div>
 
         {/* Add to Cart */}
-        <button className="border border-black rounded-[15px] w-full sm:flex-1 lg:w-[215px] h-12 sm:h-14 lg:h-[64px] text-black font-normal text-[16px] sm:text-[18px] lg:text-[20px] hover:bg-black hover:text-white transition-colors">
+        <button 
+          onClick={handleAddToCart}
+          className="border border-black rounded-[15px] w-full sm:flex-1 lg:w-[215px] h-12 sm:h-14 lg:h-[64px] text-black font-normal text-[16px] sm:text-[18px] lg:text-[20px] hover:bg-black hover:text-white transition-colors"
+        >
           Add To Cart
         </button>
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useCart } from "@/context/CartContext";
 
 const imgLogo = "/home/logo.png";
 const imgIconAccount = "/home/icon-account.svg";
@@ -11,6 +12,7 @@ const imgIconCart = "/home/icon-cart.svg";
 
 export default function Header({ className }: { className?: string }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { cartCount } = useCart();
 
   return (
     <header className={`bg-white ${className || ''}`}>
@@ -34,8 +36,13 @@ export default function Header({ className }: { className?: string }) {
           <Image src={imgIconAccount} alt="Account" width={24} height={24} className="cursor-pointer sm:w-7 sm:h-7" />
           <Image src={imgIconSearch} alt="Search" width={24} height={24} className="cursor-pointer sm:w-7 sm:h-7" />
           <Image src={imgIconHeart} alt="Wishlist" width={24} height={24} className="cursor-pointer sm:w-7 sm:h-7" />
-          <a href="/cart">
+          <a href="/cart" className="relative">
             <Image src={imgIconCart} alt="Cart" width={24} height={24} className="cursor-pointer sm:w-7 sm:h-7" />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-[#B88E2F] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium">
+                {cartCount}
+              </span>
+            )}
           </a>
         </div>
 
@@ -63,8 +70,13 @@ export default function Header({ className }: { className?: string }) {
               <Image src={imgIconAccount} alt="Account" width={28} height={28} className="cursor-pointer hover:opacity-70 transition-opacity" />
               <Image src={imgIconSearch} alt="Search" width={28} height={28} className="cursor-pointer hover:opacity-70 transition-opacity" />
               <Image src={imgIconHeart} alt="Wishlist" width={28} height={28} className="cursor-pointer hover:opacity-70 transition-opacity" />
-              <a href="/cart" onClick={() => setIsMobileMenuOpen(false)}>
+              <a href="/cart" onClick={() => setIsMobileMenuOpen(false)} className="relative">
                 <Image src={imgIconCart} alt="Cart" width={28} height={28} className="cursor-pointer hover:opacity-70 transition-opacity" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-[#B88E2F] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium">
+                    {cartCount}
+                  </span>
+                )}
               </a>
             </div>
           </div>

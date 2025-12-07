@@ -5,11 +5,23 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FeaturesSection from "@/components/FeaturesSection";
+import { useCart } from "@/context/CartContext";
 
 export default function Cart() {
-  const [quantity, setQuantity] = useState(1);
-  const pricePerItem = 250000;
-  const subtotal = pricePerItem * quantity;
+  const { cartItems, removeFromCart, updateQuantity } = useCart();
+  
+  const parsePrice = (priceString: string | number): number => {
+    const str = typeof priceString === 'string' ? priceString : String(priceString);
+    // Remove currency symbols and spaces, then replace dots with empty string (for Indonesian format)
+    // Keep only numbers
+    const cleaned = str.replace(/[^\d]/g, '');
+    return parseFloat(cleaned) || 0;
+  };
+  
+  const total = cartItems.reduce((sum, item) => {
+    const price = parsePrice(item.price);
+    return sum + (price * item.quantity);
+  }, 0);
 
   return (
     <div className="bg-white min-h-screen">
@@ -78,81 +90,106 @@ export default function Cart() {
             </div>
 
             {/* Mobile Card Layout */}
-            <div className="lg:hidden bg-white border border-[#E8E8E8] rounded-lg p-4 mb-6">
-              <div className="flex gap-4 mb-4">
-                <div className="w-20 h-20 bg-[#F9F1E7] rounded-lg flex items-center justify-center shrink-0">
-                  <Image 
-                    src="/cart/asgaard-sofa.jpg" 
-                    alt="Asgaard sofa" 
-                    width={70} 
-                    height={70}
-                    className="object-contain"
-                  />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-medium text-[16px] text-black mb-2">Asgaard sofa</h3>
-                  <p className="font-normal text-[14px] text-[#9F9F9F] mb-1">Rs. 250,000.00</p>
-                  <div className="flex items-center gap-3">
-                    <div className="border border-[#9F9F9F] rounded-[5px] px-3 py-1">
-                      <span className="font-normal text-[14px] text-black">{quantity}</span>
+            {cartItems.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-[#9F9F9F] text-[18px] mb-4">Your cart is empty</p>
+                <a href="/shop" className="inline-block bg-[#B88E2F] text-white px-8 py-3 rounded hover:bg-[#A07828] transition-colors">
+                  Continue Shopping
+                </a>
+              </div>
+            ) : (
+              <>
+                {cartItems.map((item) => {
+                  const itemPrice = parsePrice(item.price);
+                  const itemSubtotal = itemPrice * item.quantity;
+
+                  return (
+                    <div key={item.id}>
+                      {/* Mobile */}
+                      <div className="lg:hidden bg-white border border-[#E8E8E8] rounded-lg p-4 mb-6">
+                        <div className="flex gap-4 mb-4">
+                          <div className="w-20 h-20 bg-[#F9F1E7] rounded-lg flex items-center justify-center shrink-0">
+                            <Image 
+                              src={item.image} 
+                              alt={item.title} 
+                              width={70} 
+                              height={70}
+                              className="object-contain"
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-medium text-[16px] text-black mb-2">{item.title}</h3>
+                            <p className="font-normal text-[14px] text-[#9F9F9F] mb-1">{item.price}</p>
+                            <div className="flex items-center gap-3">
+                              <div className="border border-[#9F9F9F] rounded-[5px] flex items-center">
+                                <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="px-2 py-1 hover:bg-gray-100">-</button>
+                                <span className="font-normal text-[14px] text-black px-3">{item.quantity}</span>
+                                <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="px-2 py-1 hover:bg-gray-100">+</button>
+                              </div>
+                              <p className="font-medium text-[16px] text-black">Rp {itemSubtotal.toLocaleString('id-ID')}</p>
+                            </div>
+                          </div>
+                          <button onClick={() => removeFromCart(item.id)} className="shrink-0">
+                            <Image 
+                              src="/cart/delete-icon.svg" 
+                              alt="Delete" 
+                              width={24} 
+                              height={24}
+                              className="hover:opacity-70 transition-opacity"
+                            />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Desktop Cart Item */}
+                      <div className="hidden lg:flex items-center px-[3px] mb-8">
+                        {/* Product Image */}
+                        <div className="w-[105px] h-[105px] bg-[#F9F1E7] rounded-[10px] flex items-center justify-center mr-[35px]">
+                          <Image 
+                            src={item.image} 
+                            alt={item.title} 
+                            width={90} 
+                            height={90}
+                            className="object-contain"
+                          />
+                        </div>
+
+                        {/* Product Details */}
+                        <div className="flex items-center flex-1">
+                          <div className="w-[25%]">
+                            <p className="font-normal text-[16px] text-[#9F9F9F]">{item.title}</p>
+                          </div>
+                          <div className="w-[20%]">
+                            <p className="font-normal text-[16px] text-[#9F9F9F]">{item.price}</p>
+                          </div>
+                          <div className="w-[25%]">
+                            <div className="border border-[#9F9F9F] rounded-[5px] flex items-center w-fit">
+                              <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="px-3 py-2 hover:bg-gray-100">-</button>
+                              <span className="font-normal text-[16px] text-black px-4">{item.quantity}</span>
+                              <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="px-3 py-2 hover:bg-gray-100">+</button>
+                            </div>
+                          </div>
+                          <div className="w-[20%]">
+                            <p className="font-normal text-[16px] text-black">Rp {itemSubtotal.toLocaleString('id-ID')}</p>
+                          </div>
+                          <div className="w-[10%] flex justify-end">
+                            <button onClick={() => removeFromCart(item.id)} className="w-7 h-7">
+                              <Image 
+                                src="/cart/delete-icon.svg" 
+                                alt="Delete" 
+                                width={28} 
+                                height={28}
+                                className="hover:opacity-70 transition-opacity"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <p className="font-medium text-[16px] text-black">Rs. {subtotal.toLocaleString()}.00</p>
-                  </div>
-                </div>
-                <button className="shrink-0">
-                  <Image 
-                    src="/cart/delete-icon.svg" 
-                    alt="Delete" 
-                    width={24} 
-                    height={24}
-                    className="hover:opacity-70 transition-opacity"
-                  />
-                </button>
-              </div>
-            </div>
-
-            {/* Desktop Cart Item */}
-            <div className="hidden lg:flex items-center px-[3px]">
-              {/* Product Image */}
-              <div className="w-[105px] h-[105px] bg-[#F9F1E7] rounded-[10px] flex items-center justify-center mr-[35px]">
-                <Image 
-                  src="/cart/asgaard-sofa.jpg" 
-                  alt="Asgaard sofa" 
-                  width={90} 
-                  height={90}
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Product Details */}
-              <div className="flex items-center flex-1">
-                <div className="w-[25%]">
-                  <p className="font-normal text-[16px] text-[#9F9F9F]">Asgaard sofa</p>
-                </div>
-                <div className="w-[20%]">
-                  <p className="font-normal text-[16px] text-[#9F9F9F]">Rs. 250,000.00</p>
-                </div>
-                <div className="w-[25%]">
-                  <div className="border border-[#9F9F9F] rounded-[5px] w-[32px] h-[32px] flex items-center justify-center">
-                    <span className="font-normal text-[16px] text-black">{quantity}</span>
-                  </div>
-                </div>
-                <div className="w-[20%]">
-                  <p className="font-normal text-[16px] text-black">Rs. {subtotal.toLocaleString()}.00</p>
-                </div>
-                <div className="w-[10%] flex justify-end">
-                  <button className="w-7 h-7">
-                    <Image 
-                      src="/cart/delete-icon.svg" 
-                      alt="Delete" 
-                      width={28} 
-                      height={28}
-                      className="hover:opacity-70 transition-opacity"
-                    />
-                  </button>
-                </div>
-              </div>
-            </div>
+                  );
+                })}
+              </>
+            )}
           </div>
 
           {/* Cart Totals */}
@@ -162,13 +199,13 @@ export default function Cart() {
             {/* Subtotal */}
             <div className="flex justify-between mb-5 sm:mb-6 lg:mb-[30px]">
               <span className="font-medium text-[14px] sm:text-[16px] text-black">Subtotal</span>
-              <span className="font-normal text-[14px] sm:text-[16px] text-[#9F9F9F]">Rs. {subtotal.toLocaleString()}.00</span>
+              <span className="font-normal text-[14px] sm:text-[16px] text-[#9F9F9F]">Rp {total.toLocaleString('id-ID')}</span>
             </div>
 
             {/* Total */}
             <div className="flex justify-between mb-6 sm:mb-8 lg:mb-[42px]">
               <span className="font-medium text-[14px] sm:text-[16px] text-black">Total</span>
-              <span className="font-medium text-[18px] sm:text-[20px] text-[#B88E2F]">Rs. {subtotal.toLocaleString()}.00</span>
+              <span className="font-medium text-[18px] sm:text-[20px] text-[#B88E2F]">Rp {total.toLocaleString('id-ID')}</span>
             </div>
 
             {/* Check Out Button */}

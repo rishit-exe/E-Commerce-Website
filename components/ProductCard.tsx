@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useCart } from '@/context/CartContext';
 
 // Product Card Icons
 const imgIconShare = "/home/icon-share.svg";
@@ -22,6 +23,20 @@ interface ProductCardProps {
 
 export default function ProductCard({ image, title, description, price, oldPrice, discount, isNew }: ProductCardProps) {
   const router = useRouter();
+  const { addToCart } = useCart();
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addToCart({
+      id: title.toLowerCase().replace(/\s+/g, '-'),
+      title,
+      price,
+      image,
+    });
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 2000);
+  };
 
   return (
     <div className="group relative bg-[#F4F5F7] overflow-hidden w-full max-w-[285px]">
@@ -48,7 +63,7 @@ export default function ProductCard({ image, title, description, price, oldPrice
           <div className="hidden lg:flex absolute inset-0 bg-[#3A3A3A] bg-opacity-72 opacity-0 group-hover:opacity-100 transition-opacity flex-col items-center justify-center gap-4 lg:gap-6">
             <button 
               className="bg-white text-[#B88E2F] font-semibold text-[14px] sm:text-[16px] px-8 sm:px-10 lg:px-[52px] py-2 sm:py-3 hover:bg-gray-100"
-              onClick={(e) => e.stopPropagation()}
+              onClick={handleAddToCart}
             >
               Add to cart
             </button>
@@ -95,6 +110,13 @@ export default function ProductCard({ image, title, description, price, oldPrice
           )}
         </div>
       </div>
+
+      {/* Add to Cart Notification */}
+      {showNotification && (
+        <div className="fixed top-24 right-4 bg-[#B88E2F] text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in">
+          Added to cart!
+        </div>
+      )}
     </div>
   );
 }
