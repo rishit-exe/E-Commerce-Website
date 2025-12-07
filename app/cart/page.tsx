@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FeaturesSection from "@/components/FeaturesSection";
 
 export default function Cart() {
   const [quantity, setQuantity] = useState(1);
@@ -183,47 +184,7 @@ export default function Cart() {
       </div>
 
       {/* Features Section */}
-      <div className="bg-[#FAF3EA] py-12 sm:py-16 lg:py-[100px]">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-[53px]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-0 lg:flex lg:justify-between lg:items-start">
-            {/* High Quality */}
-            <div className="flex gap-3 lg:gap-2.5 items-start">
-              <Image src="/cart/trophy.svg" alt="" width={48} height={48} className="sm:w-14 sm:h-14 lg:w-[60px] lg:h-[60px]" />
-              <div>
-                <h4 className="font-semibold text-[18px] sm:text-[20px] lg:text-[25px] text-[#242424] leading-tight lg:leading-[37.5px]">High Quality</h4>
-                <p className="font-medium text-[14px] sm:text-[16px] lg:text-[20px] text-[#898989] leading-tight lg:leading-[30px]">crafted from top materials</p>
-              </div>
-            </div>
-
-            {/* Warranty Protection */}
-            <div className="flex gap-3 lg:gap-2.5 items-start">
-              <Image src="/cart/guarantee.svg" alt="" width={48} height={48} className="sm:w-14 sm:h-14 lg:w-[60px] lg:h-[60px]" />
-              <div>
-                <h4 className="font-semibold text-[18px] sm:text-[20px] lg:text-[25px] text-[#242424] leading-tight lg:leading-[37.5px]">Warranty Protection</h4>
-                <p className="font-medium text-[14px] sm:text-[16px] lg:text-[20px] text-[#898989] leading-tight lg:leading-[30px]">Over 2 years</p>
-              </div>
-            </div>
-
-            {/* Free Shipping */}
-            <div className="flex gap-3 lg:gap-2.5 items-start">
-              <Image src="/cart/shipping.svg" alt="" width={48} height={48} className="sm:w-14 sm:h-14 lg:w-[60px] lg:h-[60px]" />
-              <div>
-                <h4 className="font-semibold text-[18px] sm:text-[20px] lg:text-[25px] text-[#242424] leading-tight lg:leading-[37.5px]">Free Shipping</h4>
-                <p className="font-medium text-[14px] sm:text-[16px] lg:text-[20px] text-[#898989] leading-tight lg:leading-[30px]">Order over 150 $</p>
-              </div>
-            </div>
-
-            {/* 24/7 Support */}
-            <div className="flex gap-3 lg:gap-2.5 items-start">
-              <Image src="/cart/customer-support.svg" alt="" width={48} height={48} className="sm:w-14 sm:h-14 lg:w-[60px] lg:h-[60px]" />
-              <div>
-                <h4 className="font-semibold text-[18px] sm:text-[20px] lg:text-[25px] text-[#242424] leading-tight lg:leading-[37.5px]">24 / 7 Support</h4>
-                <p className="font-medium text-[14px] sm:text-[16px] lg:text-[20px] text-[#898989] leading-tight lg:leading-[30px]">Dedicated support</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <FeaturesSection />
 
       {/* Footer */}
       <Footer />

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FeaturesSection from "@/components/FeaturesSection";
 import productsData from "@/data/products.json";
 
 export default function ProductComparison() {
@@ -281,47 +282,7 @@ export default function ProductComparison() {
       </div>
 
       {/* Features Section */}
-      <div className="bg-[#FAF3EA] py-8 sm:py-16 lg:py-[100px]">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-[53px]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {/* High Quality */}
-            <div className="flex gap-[10px] items-start">
-              <Image src="/comparison/trophy.svg" alt="" width={60} height={60} />
-              <div>
-                <h4 className="font-semibold text-[25px] text-[#242424] leading-[37.5px]">High Quality</h4>
-                <p className="font-medium text-[20px] text-[#898989] leading-[30px]">crafted from top materials</p>
-              </div>
-            </div>
-
-            {/* Warranty Protection */}
-            <div className="flex gap-[10px] items-start">
-              <Image src="/comparison/guarantee.svg" alt="" width={60} height={60} />
-              <div>
-                <h4 className="font-semibold text-[25px] text-[#242424] leading-[37.5px]">Warranty Protection</h4>
-                <p className="font-medium text-[20px] text-[#898989] leading-[30px]">Over 2 years</p>
-              </div>
-            </div>
-
-            {/* Free Shipping */}
-            <div className="flex gap-[10px] items-start">
-              <Image src="/comparison/shipping.svg" alt="" width={60} height={60} />
-              <div>
-                <h4 className="font-semibold text-[25px] text-[#242424] leading-[37.5px]">Free Shipping</h4>
-                <p className="font-medium text-[20px] text-[#898989] leading-[30px]">Order over 150 $</p>
-              </div>
-            </div>
-
-            {/* 24/7 Support */}
-            <div className="flex gap-[10px] items-start">
-              <Image src="/comparison/customer-support.svg" alt="" width={60} height={60} />
-              <div>
-                <h4 className="font-semibold text-[25px] text-[#242424] leading-[37.5px]">24 / 7 Support</h4>
-                <p className="font-medium text-[20px] text-[#898989] leading-[30px]">Dedicated support</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <FeaturesSection />
 
       {/* Footer */}
       <Footer />

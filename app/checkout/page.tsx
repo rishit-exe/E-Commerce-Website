@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import FeaturesSection from '@/components/FeaturesSection';
 
 export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState('bank-transfer');
@@ -308,63 +309,7 @@ export default function Checkout() {
       </div>
 
       {/* Features Section */}
-      <div className="bg-[#FAF3EA] py-12 sm:py-16 lg:py-[100px]">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-[53px]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {/* High Quality */}
-            <div className="flex gap-2.5 items-start">
-              <div className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] flex-shrink-0 flex items-center justify-center">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M30 5L35 20H50L38.75 28.75L43.75 43.75L30 35L16.25 43.75L21.25 28.75L10 20H25L30 5Z" fill="#242424"/>
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-semibold text-[20px] sm:text-[25px] text-[#242424] leading-tight">High Quality</h4>
-                <p className="font-medium text-[16px] sm:text-[20px] text-[#898989] leading-relaxed">crafted from top materials</p>
-              </div>
-            </div>
-
-            {/* Warranty Protection */}
-            <div className="flex gap-2.5 items-start">
-              <div className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] flex-shrink-0 flex items-center justify-center">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M30 5L40 15V35C40 40 35 45 30 50C25 45 20 40 20 35V15L30 5Z" fill="#242424"/>
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-semibold text-[20px] sm:text-[25px] text-[#242424] leading-tight">Warranty Protection</h4>
-                <p className="font-medium text-[16px] sm:text-[20px] text-[#898989] leading-relaxed">Over 2 years</p>
-              </div>
-            </div>
-
-            {/* Free Shipping */}
-            <div className="flex gap-2.5 items-start">
-              <div className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] flex-shrink-0 flex items-center justify-center">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 15H35V35H10V15ZM40 20H50L55 30V40H40V20ZM15 45C17.75 45 20 42.75 20 40C20 37.25 17.75 35 15 35C12.25 35 10 37.25 10 40C10 42.75 12.25 45 15 45ZM45 45C47.75 45 50 42.75 50 40C50 37.25 47.75 35 45 35C42.25 35 40 37.25 40 40C40 42.75 42.25 45 45 45Z" fill="#242424"/>
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-semibold text-[20px] sm:text-[25px] text-[#242424] leading-tight">Free Shipping</h4>
-                <p className="font-medium text-[16px] sm:text-[20px] text-[#898989] leading-relaxed">Order over 150 $</p>
-              </div>
-            </div>
-
-            {/* 24/7 Support */}
-            <div className="flex gap-2.5 items-start">
-              <div className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] flex-shrink-0 flex items-center justify-center">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M30 10C18.95 10 10 18.95 10 30C10 35.5 12.5 40.5 16.5 43.75V50L23.25 46.5C25.25 47.25 27.5 47.5 30 47.5C41.05 47.5 50 38.55 50 27.5C50 16.45 41.05 7.5 30 7.5V10Z" fill="#242424"/>
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-semibold text-[20px] sm:text-[25px] text-[#242424] leading-tight">24 / 7 Support</h4>
-                <p className="font-medium text-[16px] sm:text-[20px] text-[#898989] leading-relaxed">Dedicated support</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <FeaturesSection />
 
       {/* Footer */}
       <Footer />
