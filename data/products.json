@@ -1,0 +1,59 @@
+[
+  {
+    "image": "/home/product-syltherine.jpg",
+    "title": "Syltherine",
+    "description": "Stylish cafe chair",
+    "price": "Rp 2.500.000",
+    "oldPrice": "Rp 3.500.000",
+    "discount": "-30%"
+  },
+  {
+    "image": "/home/product-leviosa.jpg",
+    "title": "Leviosa",
+    "description": "Stylish cafe chair",
+    "price": "Rp 2.500.000"
+  },
+  {
+    "image": "/home/product-lolito.jpg",
+    "title": "Lolito",
+    "description": "Luxury big sofa",
+    "price": "Rp 7.000.000",
+    "oldPrice": "Rp 14.000.000",
+    "discount": "-50%"
+  },
+  {
+    "image": "/home/product-respira.jpg",
+    "title": "Respira",
+    "description": "Outdoor bar table and stool",
+    "price": "Rp 500.000",
+    "isNew": true
+  },
+  {
+    "image": "/home/product-grifo.jpg",
+    "title": "Grifo",
+    "description": "Night lamp",
+    "price": "Rp 1.500.000"
+  },
+  {
+    "image": "/home/product-muggo.jpg",
+    "title": "Muggo",
+    "description": "Small mug",
+    "price": "Rp 150.000",
+    "isNew": true
+  },
+  {
+    "image": "/home/product-pingky.jpg",
+    "title": "Pingky",
+    "description": "Cute bed set",
+    "price": "Rp 7.000.000",
+    "oldPrice": "Rp 14.000.000",
+    "discount": "-50%"
+  },
+  {
+    "image": "/home/product-potty.jpg",
+    "title": "Potty",
+    "description": "Minimalist flower pot",
+    "price": "Rp 500.000",
+    "isNew": true
+  }
+]
