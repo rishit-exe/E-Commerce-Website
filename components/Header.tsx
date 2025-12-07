@@ -52,19 +52,19 @@ export default function Header({ className }: { className?: string }) {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-white z-40 lg:hidden pt-24 px-6">
-            <nav className="flex flex-col gap-6 mb-8">
-              <a href="/" className="font-medium text-[18px] text-black hover:text-[#B88E2F]" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-              <a href="/shop" className="font-medium text-[18px] text-black hover:text-[#B88E2F]" onClick={() => setIsMobileMenuOpen(false)}>Shop</a>
-              <a href="/about" className="font-medium text-[18px] text-black hover:text-[#B88E2F]" onClick={() => setIsMobileMenuOpen(false)}>About</a>
-              <a href="/contact" className="font-medium text-[18px] text-black hover:text-[#B88E2F]" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
+          <div className="fixed inset-0 bg-white z-40 lg:hidden flex flex-col items-center justify-center">
+            <nav className="flex flex-col items-center gap-8 mb-12">
+              <a href="/" className="font-medium text-[22px] text-black hover:text-[#B88E2F] transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
+              <a href="/shop" className="font-medium text-[22px] text-black hover:text-[#B88E2F] transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Shop</a>
+              <a href="/about" className="font-medium text-[22px] text-black hover:text-[#B88E2F] transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</a>
+              <a href="/contact" className="font-medium text-[22px] text-black hover:text-[#B88E2F] transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
             </nav>
-            <div className="flex gap-6 items-center pt-6 border-t border-gray-200">
-              <Image src={imgIconAccount} alt="Account" width={28} height={28} className="cursor-pointer" />
-              <Image src={imgIconSearch} alt="Search" width={28} height={28} className="cursor-pointer" />
-              <Image src={imgIconHeart} alt="Wishlist" width={28} height={28} className="cursor-pointer" />
+            <div className="flex gap-8 items-center pt-8 border-t border-gray-200">
+              <Image src={imgIconAccount} alt="Account" width={28} height={28} className="cursor-pointer hover:opacity-70 transition-opacity" />
+              <Image src={imgIconSearch} alt="Search" width={28} height={28} className="cursor-pointer hover:opacity-70 transition-opacity" />
+              <Image src={imgIconHeart} alt="Wishlist" width={28} height={28} className="cursor-pointer hover:opacity-70 transition-opacity" />
               <a href="/cart" onClick={() => setIsMobileMenuOpen(false)}>
-                <Image src={imgIconCart} alt="Cart" width={28} height={28} className="cursor-pointer" />
+                <Image src={imgIconCart} alt="Cart" width={28} height={28} className="cursor-pointer hover:opacity-70 transition-opacity" />
               </a>
             </div>
           </div>
