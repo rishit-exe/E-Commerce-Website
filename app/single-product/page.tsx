@@ -45,7 +45,7 @@ function Breadcrumb() {
 }
 
 function ProductGallery() {
-  const thumbnails = [imgOutdoorSofa1, imgOutdoorSofa2, imgStuartSofa, imgMayaSofa];
+  const thumbnails = [imgAsgaardMain, imgOutdoorSofa1, imgOutdoorSofa2, imgStuartSofa, imgMayaSofa];
   const [selectedImage, setSelectedImage] = useState(0);
 
   return (
@@ -70,7 +70,7 @@ function ProductGallery() {
       {/* Main Image */}
       <div className="bg-[#F9F1E7] rounded-[10px] w-full sm:w-[350px] md:w-[400px] lg:w-[423px] h-[300px] sm:h-[400px] lg:h-[500px] flex items-center justify-center overflow-hidden">
         <div className="relative w-full h-full">
-          <Image src={imgAsgaardMain} alt="Asgaard Sofa" fill className="object-cover" />
+          <Image src={thumbnails[selectedImage]} alt="Asgaard Sofa" fill className="object-cover" />
         </div>
       </div>
     </div>
