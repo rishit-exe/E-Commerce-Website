@@ -172,10 +172,10 @@ function ProductDetails() {
         </button>
 
         {/* Compare */}
-        <button className="border border-black rounded-[15px] w-[215px] h-[64px] flex items-center justify-center gap-[10px] text-black font-normal text-[20px] hover:bg-black hover:text-white transition-colors">
+        <a href="/product-comparison" className="border border-black rounded-[15px] w-[215px] h-[64px] flex items-center justify-center gap-[10px] text-black font-normal text-[20px] hover:bg-black hover:text-white transition-colors cursor-pointer">
           <span className="text-[23px]">+</span>
           <span>Compare</span>
-        </button>
+        </a>
       </div>
 
       {/* Divider */}

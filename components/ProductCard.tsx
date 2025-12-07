@@ -50,10 +50,14 @@ export default function ProductCard({ image, title, description, price, oldPrice
                 <Image src={imgIconShare} alt="Share" width={16} height={16} />
                 Share
               </button>
-              <button className="flex items-center gap-[2px] font-semibold text-[16px] hover:text-gray-300">
+              <a 
+                href="/product-comparison" 
+                className="flex items-center gap-[2px] font-semibold text-[16px] hover:text-gray-300"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <Image src={imgIconCompare} alt="Compare" width={16} height={16} />
                 Compare
-              </button>
+              </a>
               <button className="flex items-center gap-[2px] font-semibold text-[16px] hover:text-gray-300">
                 <Image src={imgIconLike} alt="Like" width={16} height={16} />
                 Like
