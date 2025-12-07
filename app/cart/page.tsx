@@ -20,7 +20,7 @@ export default function Cart() {
         {/* Background Image with Blur */}
         <div className="absolute inset-0 overflow-hidden">
           <Image 
-            src="/cart/banner-bg.jpg" 
+            src="/shop/shop-banner.jpg" 
             alt="" 
             fill
             className="object-cover opacity-50 blur-[3px]"
@@ -172,9 +172,11 @@ export default function Cart() {
 
             {/* Check Out Button */}
             <div className="flex justify-center">
-              <button className="border border-black rounded-[15px] w-full sm:w-[222px] h-12 sm:h-14 lg:h-[58.95px] text-[18px] sm:text-[20px] text-black font-normal hover:bg-black hover:text-white transition-colors">
-                Check Out
-              </button>
+              <a href="/checkout">
+                <button className="border border-black rounded-[15px] w-full sm:w-[222px] h-12 sm:h-14 lg:h-[58.95px] text-[18px] sm:text-[20px] text-black font-normal hover:bg-black hover:text-white transition-colors">
+                  Check Out
+                </button>
+              </a>
             </div>
           </div>
         </div>

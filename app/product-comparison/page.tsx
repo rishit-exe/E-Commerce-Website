@@ -19,7 +19,7 @@ export default function ProductComparison() {
         {/* Background Image with Blur */}
         <div className="absolute inset-0 overflow-hidden">
           <Image 
-            src="/comparison/banner-bg.jpg" 
+            src="/shop/shop-banner.jpg" 
             alt="" 
             fill
             className="object-cover opacity-50 blur-[3px]"
