@@ -37,17 +37,17 @@ function Header({ className }: { className?: string }) {
     <header className={`bg-white ${className || ''}`}>
       <div className="container mx-auto px-[54px] h-[100px] flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-[5px]">
+        <a href="/" className="flex items-center gap-[5px] cursor-pointer">
           <Image src={imgLogo} alt="Logo" width={50} height={32} className="object-contain" />
           <span className="font-bold text-[34px] text-black font-['Montserrat']">Furniro</span>
-        </div>
+        </a>
 
         {/* Navigation */}
         <nav className="flex gap-[75px]">
-          <a href="#" className="font-medium text-[16px] text-black hover:text-[#B88E2F]">Home</a>
-          <a href="#" className="font-medium text-[16px] text-black hover:text-[#B88E2F]">Shop</a>
-          <a href="#" className="font-medium text-[16px] text-black hover:text-[#B88E2F]">About</a>
-          <a href="#" className="font-medium text-[16px] text-black hover:text-[#B88E2F]">Contact</a>
+          <a href="/" className="font-medium text-[16px] text-black hover:text-[#B88E2F]">Home</a>
+          <a href="/shop" className="font-medium text-[16px] text-black hover:text-[#B88E2F]">Shop</a>
+          <a href="/about" className="font-medium text-[16px] text-black hover:text-[#B88E2F]">About</a>
+          <a href="/contact" className="font-medium text-[16px] text-black hover:text-[#B88E2F]">Contact</a>
         </nav>
 
         {/* Icons */}
@@ -395,10 +395,10 @@ function Footer() {
         <div>
           <h4 className="text-[#9F9F9F] font-medium text-[16px] mb-[55px]">Links</h4>
           <ul className="space-y-[46px]">
-            <li><a href="#" className="text-black font-medium text-[16px] hover:text-[#B88E2F]">Home</a></li>
-            <li><a href="#" className="text-black font-medium text-[16px] hover:text-[#B88E2F]">Shop</a></li>
-            <li><a href="#" className="text-black font-medium text-[16px] hover:text-[#B88E2F]">About</a></li>
-            <li><a href="#" className="text-black font-medium text-[16px] hover:text-[#B88E2F]">Contact</a></li>
+            <li><a href="/" className="text-black font-medium text-[16px] hover:text-[#B88E2F]">Home</a></li>
+            <li><a href="/shop" className="text-black font-medium text-[16px] hover:text-[#B88E2F]">Shop</a></li>
+            <li><a href="/about" className="text-black font-medium text-[16px] hover:text-[#B88E2F]">About</a></li>
+            <li><a href="/contact" className="text-black font-medium text-[16px] hover:text-[#B88E2F]">Contact</a></li>
           </ul>
         </div>
 
