@@ -15,7 +15,7 @@ export default function ProductComparison() {
       <Header />
 
       {/* Hero Section */}
-      <div className="relative h-[316px] w-full">
+      <div className="relative h-[200px] sm:h-[250px] lg:h-[316px] w-full">
         {/* Background Image with Blur */}
         <div className="absolute inset-0 overflow-hidden">
           <Image 
@@ -27,100 +27,112 @@ export default function ProductComparison() {
         </div>
         
         {/* Logo and Title */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center px-4">
           <Image 
             src="/home/logo.png" 
             alt="Logo" 
-            width={77} 
-            height={77}
-            className="mb-[16px]"
+            width={60} 
+            height={60}
+            className="mb-3 sm:w-[77px] sm:h-[77px] sm:mb-4"
           />
-          <h1 className="font-medium text-[48px] text-black">Product Comparison</h1>
+          <h1 className="font-medium text-[24px] sm:text-[36px] lg:text-[48px] text-black text-center">Product Comparison</h1>
         </div>
 
         {/* Breadcrumb */}
-        <div className="absolute bottom-[21px] left-1/2 -translate-x-1/2 flex items-center gap-[14px]">
-          <a href="/" className="font-medium text-[16px] text-black hover:text-[#B88E2F] cursor-pointer transition-colors">Home</a>
+        <div className="absolute bottom-4 sm:bottom-[21px] left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-3.5">
+          <a href="/" className="font-medium text-[14px] sm:text-[16px] text-black hover:text-[#B88E2F] cursor-pointer transition-colors">Home</a>
           <Image 
             src="/comparison/arrow-down.svg" 
             alt="" 
-            width={20} 
-            height={20}
-            className="rotate-[-90deg]"
+            width={16} 
+            height={16}
+            className="-rotate-90 sm:w-5 sm:h-5"
           />
-          <span className="font-light text-[16px] text-black">Comparison</span>
+          <span className="font-light text-[14px] sm:text-[16px] text-black">Comparison</span>
         </div>
       </div>
 
       {/* Main Comparison Content */}
-      <div className="px-[54px] py-0 relative">
-        {/* Top Section - Product Cards and Add Product */}
-        <div className="flex items-start gap-0 pt-[100px] pb-[70px] border-b border-[#E8E8E8]">
-          {/* Left Column - Call to Action */}
-          <div className="w-[25%] pt-[107.5px]">
-            <h2 className="font-medium text-[28px] text-black leading-[35.42px] mb-[17px] max-w-[223px]">
-              Go to Product page for more Products
-            </h2>
-            <a href="/shop" className="flex items-center cursor-pointer group">
-              <span className="font-medium text-[20px] text-[#727272] group-hover:text-[#B88E2F] transition-colors">View More</span>
-            </a>
-            <div className="w-[115px] h-[2px] bg-[#727272] mt-[3px]"></div>
-          </div>
+      <div className="px-4 sm:px-6 lg:px-[54px] py-0 relative">
+        <div>
+            {/* Top Section - Product Cards and Add Product */}
+            <div className="pt-8 sm:pt-12 lg:pt-[100px] pb-8 sm:pb-12 lg:pb-[70px] border-b border-[#E8E8E8]">
+              {/* Mobile: Title and Link */}
+              <div className="lg:hidden mb-6 text-center">
+                <h2 className="font-medium text-[18px] sm:text-[20px] text-black mb-2">
+                  Go to Product page for more Products
+                </h2>
+                <a href="/shop" className="inline-flex items-center cursor-pointer group">
+                  <span className="font-medium text-[16px] text-[#727272] group-hover:text-[#B88E2F] transition-colors border-b-2 border-[#727272]">View More</span>
+                </a>
+              </div>
+
+              <div className="flex items-start gap-0">
+              {/* Left Column - Call to Action - Desktop Only */}
+              <div className="hidden lg:block w-[25%] pt-[107.5px]">
+                <h2 className="font-medium text-[28px] text-black leading-[35.42px] mb-[17px] max-w-[223px]">
+                  Go to Product page for more Products
+                </h2>
+                <a href="/shop" className="flex items-center cursor-pointer group">
+                  <span className="font-medium text-[20px] text-[#727272] group-hover:text-[#B88E2F] transition-colors">View More</span>
+                </a>
+                <div className="w-[115px] h-[2px] bg-[#727272] mt-1"></div>
+              </div>
 
           {/* Product 1 - Asgaard Sofa */}
-          <div className="w-[25%] flex flex-col items-center">
-            <div className="w-[280px] h-[177px] bg-[#F9F1E7] rounded-[10px] flex items-center justify-center mb-[24px]">
+          <div className="w-1/2 lg:w-[25%] flex flex-col items-center px-2">
+            <div className="w-full max-w-[280px] h-[120px] sm:h-[150px] lg:h-[177px] bg-[#F9F1E7] rounded-[10px] flex items-center justify-center mb-4 lg:mb-[24px]">
               <Image 
                 src="/comparison/asgaard-sofa.jpg" 
                 alt="Asgaard Sofa" 
                 width={239} 
                 height={142}
-                className="object-contain"
+                className="object-contain w-auto h-auto max-w-full max-h-full"
               />
             </div>
-            <h3 className="font-medium text-[24px] text-black mb-[5px]">Asgaard Sofa</h3>
-            <p className="font-medium text-[18px] text-black mb-[2px]">Rs. 250,000.00</p>
-            <div className="flex items-center gap-[11px]">
-              <span className="font-medium text-[18px] text-black">4.7</span>
-              <div className="flex gap-[6px]">
+            <h3 className="font-medium text-[16px] sm:text-[20px] lg:text-[24px] text-black mb-1 lg:mb-[5px] text-center">Asgaard Sofa</h3>
+            <p className="font-medium text-[14px] sm:text-[16px] lg:text-[18px] text-black mb-1 lg:mb-[2px]">Rs. 250,000.00</p>
+            <div className="flex flex-wrap items-center justify-center gap-2 lg:gap-[11px] text-[12px] sm:text-sm lg:text-base">
+              <span className="font-medium text-black">4.7</span>
+              <div className="flex gap-1 lg:gap-[6px]">
                 {[1, 2, 3, 4].map((i) => (
-                  <Image key={i} src="/comparison/star-filled.svg" alt="" width={20} height={20} />
+                  <Image key={i} src="/comparison/star-filled.svg" alt="" width={16} height={16} className="lg:w-5 lg:h-5" />
                 ))}
-                <Image src="/comparison/star-half.svg" alt="" width={20} height={20} />
+                <Image src="/comparison/star-half.svg" alt="" width={16} height={16} className="lg:w-5 lg:h-5" />
               </div>
-              <div className="w-[1px] h-[30px] bg-[#E8E8E8]"></div>
-              <span className="font-normal text-[13px] text-[#9F9F9F]">204 Review</span>
+              <div className="hidden sm:block w-[1px] h-5 lg:h-[30px] bg-[#E8E8E8]"></div>
+              <span className="font-normal text-[#9F9F9F]">204 Review</span>
             </div>
           </div>
 
           {/* Product 2 - Outdoor Sofa Set */}
-          <div className="w-[25%] flex flex-col items-center">
-            <div className="w-[280px] h-[177px] bg-[#F9F1E7] rounded-[10px] flex items-center justify-center mb-[24px]">
+          <div className="w-1/2 lg:w-[25%] flex flex-col items-center px-2">
+            <div className="w-full max-w-[280px] h-[120px] sm:h-[150px] lg:h-[177px] bg-[#F9F1E7] rounded-[10px] flex items-center justify-center mb-4 lg:mb-[24px]">
               <Image 
                 src="/comparison/outdoor-sofa-set.jpg" 
                 alt="Outdoor Sofa Set" 
                 width={252} 
                 height={161}
-                className="object-contain"
+                className="object-contain w-auto h-auto max-w-full max-h-full"
               />
             </div>
-            <h3 className="font-medium text-[24px] text-black mb-[5px]">Outdoor Sofa Set</h3>
-            <p className="font-medium text-[18px] text-black mb-[2px]">Rs. 224,000.00</p>
-            <div className="flex items-center gap-[11px]">
-              <span className="font-medium text-[18px] text-black">4.2</span>
-              <div className="flex gap-[6px]">
+            <h3 className="font-medium text-[16px] sm:text-[20px] lg:text-[24px] text-black mb-1 lg:mb-[5px] text-center">Outdoor Sofa Set</h3>
+            <p className="font-medium text-[14px] sm:text-[16px] lg:text-[18px] text-black mb-1 lg:mb-[2px]">Rs. 224,000.00</p>
+            <div className="flex flex-wrap items-center justify-center gap-2 lg:gap-[11px] text-[12px] sm:text-sm lg:text-base">
+              <span className="font-medium text-black">4.2</span>
+              <div className="flex gap-1 lg:gap-[6px]">
                 {[1, 2, 3, 4].map((i) => (
-                  <Image key={i} src="/comparison/star-filled.svg" alt="" width={20} height={20} />
+                  <Image key={i} src="/comparison/star-filled.svg" alt="" width={16} height={16} className="lg:w-5 lg:h-5" />
                 ))}
-                <Image src="/comparison/star-half.svg" alt="" width={20} height={20} />
+                <Image src="/comparison/star-half.svg" alt="" width={16} height={16} className="lg:w-5 lg:h-5" />
               </div>
-              <div className="w-[1px] h-[30px] bg-[#E8E8E8]"></div>
-              <span className="font-normal text-[13px] text-[#9F9F9F]">145 Review</span>
+              <div className="hidden sm:block w-[1px] h-5 lg:h-[30px] bg-[#E8E8E8]"></div>
+              <span className="font-normal text-[#9F9F9F]">145 Review</span>
             </div>
           </div>
 
-          {/* Add Product Button */}
-          <div className="w-[25%] flex flex-col items-center pt-[83px] relative">
+          {/* Product Button - Desktop Only */}
+          <div className="hidden lg:flex w-[25%] flex-col items-center pt-[83px] relative">
             <h3 className="font-medium text-[24px] text-black mb-[14px]">Add A Product</h3>
             <button 
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -163,18 +175,19 @@ export default function ProductComparison() {
               </div>
             )}
           </div>
-        </div>
+              </div>
+            </div>
 
-        {/* Comparison Table */}
-        <div className="relative">
-          {/* Vertical Separators */}
-          <div className="absolute left-[25%] top-0 bottom-0 w-[1px] bg-[#E8E8E8]"></div>
-          <div className="absolute left-[50%] top-0 bottom-0 w-[1px] bg-[#E8E8E8]"></div>
-          <div className="absolute left-[75%] top-0 bottom-0 w-[1px] bg-[#E8E8E8]"></div>
+            {/* Comparison Table */}
+            <div className="relative">
+          {/* Vertical Separators - Desktop Only */}
+          <div className="hidden lg:block absolute left-[25%] top-0 bottom-0 w-[1px] bg-[#E8E8E8]"></div>
+          <div className="hidden lg:block absolute left-[50%] top-0 bottom-0 w-[1px] bg-[#E8E8E8]"></div>
+          <div className="hidden lg:block absolute left-[75%] top-0 bottom-0 w-[1px] bg-[#E8E8E8]"></div>
 
           {/* General Section */}
-          <div className="py-[59px]">
-            <h3 className="font-medium text-[28px] text-black mb-[58px] pl-[42px]">General</h3>
+          <div className="py-8 lg:py-[59px]">
+            <h3 className="font-medium text-[20px] sm:text-[24px] lg:text-[28px] text-black mb-6 lg:mb-[58px] px-4 lg:pl-[42px]">General</h3>
             
             <ComparisonRow label="Sales Package" col1="1 sectional sofa" col2="1 Three Seater, 2 Single Seater" />
             <ComparisonRow label="Model Number" col1="TFCBLIGRBL6SRHS" col2="DTUBLIGRBL568" />
@@ -185,8 +198,8 @@ export default function ProductComparison() {
           </div>
 
           {/* Product Section */}
-          <div className="py-[59px] border-t border-[#E8E8E8]">
-            <h3 className="font-medium text-[28px] text-black mb-[58px] pl-[42px]">Product</h3>
+          <div className="py-8 lg:py-[59px] border-t border-[#E8E8E8]">
+            <h3 className="font-medium text-[20px] sm:text-[24px] lg:text-[28px] text-black mb-6 lg:mb-[58px] px-4 lg:pl-[42px]">Product</h3>
             
             <ComparisonRow label="Filling Material" col1="Foam" col2="Matte" />
             <ComparisonRow label="Finish Type" col1="Bright Grey & Lion" col2="Bright Grey & Lion" />
@@ -196,8 +209,8 @@ export default function ProductComparison() {
           </div>
 
           {/* Dimensions Section */}
-          <div className="py-[59px] border-t border-[#E8E8E8]">
-            <h3 className="font-medium text-[28px] text-black mb-[58px] pl-[42px]">Dimensions</h3>
+          <div className="py-8 lg:py-[59px] border-t border-[#E8E8E8]">
+            <h3 className="font-medium text-[20px] sm:text-[24px] lg:text-[28px] text-black mb-6 lg:mb-[58px] px-4 lg:pl-[42px]">Dimensions</h3>
             
             <ComparisonRow label="Width" col1="265.32 cm" col2="265.32 cm" />
             <ComparisonRow label="Height" col1="76 cm" col2="76 cm" />
@@ -208,8 +221,8 @@ export default function ProductComparison() {
           </div>
 
           {/* Warranty Section */}
-          <div className="py-[59px] border-t border-[#E8E8E8]">
-            <h3 className="font-medium text-[28px] text-black mb-[58px] pl-[42px]">Warranty</h3>
+          <div className="py-8 lg:py-[59px] border-t border-[#E8E8E8]">
+            <h3 className="font-medium text-[20px] sm:text-[24px] lg:text-[28px] text-black mb-6 lg:mb-[58px] px-4 lg:pl-[42px]">Warranty</h3>
             
             <ComparisonRow 
               label="Warranty Summary" 
@@ -238,27 +251,39 @@ export default function ProductComparison() {
           </div>
 
           {/* Add to Cart Buttons */}
-          <div className="flex py-[62px]">
-            <div className="w-[25%]"></div>
-            <div className="w-[25%] flex justify-center">
-              <button className="w-[215px] h-[64px] bg-[#B88E2F] border border-[#B88E2F] flex items-center justify-center hover:bg-[#A07828] hover:border-[#A07828] transition-all duration-300 cursor-pointer">
-                <span className="font-normal text-[20px] text-white">Add To Cart</span>
+          <div className="py-8 lg:py-[62px]">
+            <div className="flex gap-2 sm:gap-4 lg:hidden px-4">
+              <button className="flex-1 h-[50px] bg-[#B88E2F] border border-[#B88E2F] flex items-center justify-center hover:bg-[#A07828] hover:border-[#A07828] transition-all duration-300 cursor-pointer rounded">
+                <span className="font-normal text-[12px] sm:text-[14px] text-white text-center">Add To Cart</span>
+              </button>
+              <button className="flex-1 h-[50px] bg-[#B88E2F] border border-[#B88E2F] flex items-center justify-center hover:bg-[#A07828] hover:border-[#A07828] transition-all duration-300 cursor-pointer rounded">
+                <span className="font-normal text-[12px] sm:text-[14px] text-white text-center">Add To Cart</span>
               </button>
             </div>
-            <div className="w-[25%] flex justify-center">
-              <button className="w-[215px] h-[64px] bg-[#B88E2F] border border-[#B88E2F] flex items-center justify-center hover:bg-[#A07828] hover:border-[#A07828] transition-all duration-300 cursor-pointer">
-                <span className="font-normal text-[20px] text-white">Add To Cart</span>
-              </button>
+            
+            <div className="hidden lg:flex">
+              <div className="w-[25%]"></div>
+              <div className="w-[25%] flex justify-center">
+                <button className="w-[215px] h-[64px] bg-[#B88E2F] border border-[#B88E2F] flex items-center justify-center hover:bg-[#A07828] hover:border-[#A07828] transition-all duration-300 cursor-pointer">
+                  <span className="font-normal text-[20px] text-white">Add To Cart</span>
+                </button>
+              </div>
+              <div className="w-[25%] flex justify-center">
+                <button className="w-[215px] h-[64px] bg-[#B88E2F] border border-[#B88E2F] flex items-center justify-center hover:bg-[#A07828] hover:border-[#A07828] transition-all duration-300 cursor-pointer">
+                  <span className="font-normal text-[20px] text-white">Add To Cart</span>
+                </button>
+              </div>
+              <div className="w-[25%]"></div>
             </div>
-            <div className="w-[25%]"></div>
           </div>
+            </div>
         </div>
       </div>
 
       {/* Features Section */}
-      <div className="bg-[#FAF3EA] py-[100px]">
-        <div className="container mx-auto px-[53px]">
-          <div className="flex justify-between items-start">
+      <div className="bg-[#FAF3EA] py-8 sm:py-16 lg:py-[100px]">
+        <div className="container mx-auto px-4 sm:px-8 lg:px-[53px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {/* High Quality */}
             <div className="flex gap-[10px] items-start">
               <Image src="/comparison/trophy.svg" alt="" width={60} height={60} />
@@ -317,23 +342,46 @@ function ComparisonRow({
   multiline?: boolean;
 }) {
   return (
-    <div className="flex items-start mb-[59px]">
-      <div className="w-[25%] pl-[42px]">
-        <p className={`font-normal text-[20px] text-black leading-[25.3px] ${multiline ? 'max-w-[241px]' : ''}`}>
+    <>
+      {/* Mobile: Stacked Layout */}
+      <div className="lg:hidden mb-6 px-4">
+        <p className="font-semibold text-[14px] sm:text-[16px] text-black mb-3 pb-2 border-b border-[#E8E8E8]">
           {label}
         </p>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <p className="text-[11px] sm:text-[12px] text-[#9F9F9F] mb-1">Asgaard Sofa</p>
+            <p className="font-normal text-[13px] sm:text-[14px] text-black leading-relaxed">
+              {col1}
+            </p>
+          </div>
+          <div>
+            <p className="text-[11px] sm:text-[12px] text-[#9F9F9F] mb-1">Outdoor Sofa</p>
+            <p className="font-normal text-[13px] sm:text-[14px] text-black leading-relaxed">
+              {col2}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="w-[25%] pl-[21px]">
-        <p className={`font-normal text-[20px] text-black leading-[25.3px] ${multiline ? 'max-w-[241px]' : ''}`}>
-          {col1}
-        </p>
+
+      <div className="hidden lg:flex items-start mb-[59px]">
+        <div className="w-[25%] pl-[42px]">
+          <p className={`font-normal text-[20px] text-black leading-[25.3px] ${multiline ? 'max-w-[241px]' : ''}`}>
+            {label}
+          </p>
+        </div>
+        <div className="w-[25%] pl-[21px]">
+          <p className={`font-normal text-[20px] text-black leading-[25.3px] ${multiline ? 'max-w-[241px]' : ''}`}>
+            {col1}
+          </p>
+        </div>
+        <div className="w-[25%] pl-[25px]">
+          <p className={`font-normal text-[20px] text-black leading-[25.3px] ${multiline ? 'max-w-[241px]' : ''}`}>
+            {col2}
+          </p>
+        </div>
+        <div className="w-[25%]"></div>
       </div>
-      <div className="w-[25%] pl-[25px]">
-        <p className={`font-normal text-[20px] text-black leading-[25.3px] ${multiline ? 'max-w-[241px]' : ''}`}>
-          {col2}
-        </p>
-      </div>
-      <div className="w-[25%]"></div>
-    </div>
+    </>
   );
 }

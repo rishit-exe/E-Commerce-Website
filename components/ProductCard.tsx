@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 // Product Card Icons
 const imgIconShare = "/home/icon-share.svg";
@@ -18,10 +21,11 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ image, title, description, price, oldPrice, discount, isNew }: ProductCardProps) {
+  const router = useRouter();
+
   return (
     <div className="group relative bg-[#F4F5F7] overflow-hidden w-full max-w-[285px]">
-      <Link href="/single-product" className="block">
-        <div className="relative h-[250px] sm:h-[280px] lg:h-[301px] bg-gray-200">
+      <div className="relative h-[250px] sm:h-[280px] lg:h-[301px] bg-gray-200 cursor-pointer" onClick={() => router.push('/single-product')}>
           <Image src={image} alt={title} fill className="object-cover" />
           
           {/* Label */}
@@ -40,32 +44,42 @@ export default function ProductCard({ image, title, description, price, oldPrice
             </div>
           )}
 
-          {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-[#3A3A3A] bg-opacity-72 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-4 lg:gap-6">
-            <button className="bg-white text-[#B88E2F] font-semibold text-[14px] sm:text-[16px] px-8 sm:px-10 lg:px-[52px] py-2 sm:py-3 hover:bg-gray-100">
+          {/* Hover Overlay only for desktop hover */}
+          <div className="hidden lg:flex absolute inset-0 bg-[#3A3A3A] bg-opacity-72 opacity-0 group-hover:opacity-100 transition-opacity flex-col items-center justify-center gap-4 lg:gap-6">
+            <button 
+              className="bg-white text-[#B88E2F] font-semibold text-[14px] sm:text-[16px] px-8 sm:px-10 lg:px-[52px] py-2 sm:py-3 hover:bg-gray-100"
+              onClick={(e) => e.stopPropagation()}
+            >
               Add to cart
             </button>
             <div className="flex gap-3 sm:gap-4 lg:gap-5 text-white text-[14px] sm:text-[16px]">
-              <button className="flex items-center gap-1 font-semibold hover:text-gray-300">
-                <Image src={imgIconShare} alt="Share" width={14} height={14} className="sm:w-4 sm:h-4" />
-                Share
-              </button>
-              <a 
-                href="/product-comparison" 
+              <button 
                 className="flex items-center gap-1 font-semibold hover:text-gray-300"
                 onClick={(e) => e.stopPropagation()}
               >
+                <Image src={imgIconShare} alt="Share" width={14} height={14} className="sm:w-4 sm:h-4" />
+                Share
+              </button>
+              <button 
+                className="flex items-center gap-1 font-semibold hover:text-gray-300"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  router.push('/product-comparison');
+                }}
+              >
                 <Image src={imgIconCompare} alt="Compare" width={14} height={14} className="sm:w-4 sm:h-4" />
                 Compare
-              </a>
-              <button className="flex items-center gap-1 font-semibold hover:text-gray-300">
+              </button>
+              <button 
+                className="flex items-center gap-1 font-semibold hover:text-gray-300"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <Image src={imgIconLike} alt="Like" width={14} height={14} className="sm:w-4 sm:h-4" />
                 Like
               </button>
             </div>
           </div>
         </div>
-      </Link>
 
       <div className="p-3 sm:p-4">
         <Link href="/single-product">

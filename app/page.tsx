@@ -46,9 +46,11 @@ function HeroBanner() {
           <p className="text-[#333333] font-medium text-[14px] sm:text-[16px] lg:text-[18px] leading-6 mb-6 lg:mb-[46px] max-w-[546px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.
           </p>
-          <button className="bg-[#B88E2F] text-white font-bold text-[14px] sm:text-[16px] px-8 sm:px-12 lg:px-[72px] py-3 sm:py-4 lg:py-[25px] hover:bg-[#9f7a28] transition-colors uppercase w-full sm:w-auto">
-            BUY NOW
-          </button>
+          <a href="/shop" >
+            <button className="bg-[#B88E2F] text-white font-bold text-[14px] sm:text-[16px] px-8 sm:px-12 lg:px-[72px] py-3 sm:py-4 lg:py-[25px] hover:bg-[#9f7a28] transition-colors uppercase w-full sm:w-auto">
+              BUY NOW
+            </button>
+          </a>
         </div>
       </div>
     </div>
